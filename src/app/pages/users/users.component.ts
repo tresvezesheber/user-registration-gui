@@ -11,6 +11,8 @@ export class UsersComponent implements OnInit {
   users!: User[];
   page!: Page;
 
+  page_ = 1;
+
   constructor(private service: UserService) {}
 
   ngOnInit(): void {
@@ -20,15 +22,9 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  previousPage(): void {
-    this.service.goToPage(this.page.number - 1).subscribe((users) => {
-      this.page = users;
-      this.users = users.content;
-    });
-  }
-
-  nextPage(): void {
-    this.service.goToPage(this.page.number + 1).subscribe((users) => {
+  handlePageChange(event: number): void {
+    this.page_ = event;
+    this.service.goToPage(this.page_ - 1).subscribe((users) => {
       this.page = users;
       this.users = users.content;
     });

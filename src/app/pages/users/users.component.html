@@ -10,19 +10,24 @@
             </tr>
         </thead>
         <tbody class="table__body">
-            <tr class="table__row" *ngFor="let user of users">
+            @for (user of users | paginate : {
+                itemsPerPage: page.size,
+                currentPage: page_,
+                totalItems: page.totalElements
+            }; track user.id; let i = $index) {
+            <tr class="table__row">
                 <td class="table__cell">{{ user.id }}</td>
                 <td class="table__cell">{{ user.name }}</td>
                 <td class="table__cell">{{ user.email }}</td>
                 <td class="table__cell">{{ user.password }}</td>
             </tr>
+            }   
         </tbody>
         <tfoot class="table__foot">
              <tr class="table__row">
                 <td colspan="2" class="table__cell">Exibindo {{ page.numberOfElements }} registros de {{ page.totalElements }}</td>
                 <td colspan="2" class="table__cell">
-                    <button class="button button--primary" (click)="previousPage()">Anterior</button>
-                    <button class="button button--primary" (click)="nextPage()">Próxima</button>
+                   <pagination-controls previousLabel="Anterior" nextLabel="Próxima" [responsive]="true" (pageChange)="handlePageChange($event)"></pagination-controls>
                 </td>
             </tr>
         </tfoot>
