@@ -1,0 +1,23 @@
+.table {
+    width: 80%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.table__cell {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.table__head .table__row {
+    color: #fff;
+    background-color: #132F7C;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.table__body .table__row:not(.table__head .table__row):hover {
+    background-color: #f2f2f2;
+}
