@@ -15,4 +15,8 @@ export class UserService {
   getUsers(): Observable<Page> {
     return this.httpClient.get<Page>(this.API_URL);
   }
+
+  goToPage(page: number): Observable<Page> {
+    return this.httpClient.get<Page>(`${this.API_URL}?page=${page}`);
+  }
 }

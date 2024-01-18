@@ -17,6 +17,14 @@
                 <td class="table__cell">{{ user.password }}</td>
             </tr>
         </tbody>
-        <tfoot class="table__foot"></tfoot>
+        <tfoot class="table__foot">
+             <tr class="table__row">
+                <td colspan="2" class="table__cell">Exibindo {{ page.numberOfElements }} registros de {{ page.totalElements }}</td>
+                <td colspan="2" class="table__cell">
+                    <button class="button button--primary" (click)="previousPage()">Anterior</button>
+                    <button class="button button--primary" (click)="nextPage()">Próxima</button>
+                </td>
+            </tr>
+        </tfoot>
     </table>
 </div>
